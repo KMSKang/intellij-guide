@@ -4,6 +4,7 @@ public class Reformat {
 
     public void reformat() {
         System.out.println("aa");
+        System.out.println("aa");
     }
 
 }
