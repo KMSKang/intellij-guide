@@ -1,10 +1,20 @@
-plugins {
-    id 'java'
-//    id 'war'
-//    id 'org.springframework.boot' version '2.1.6.RELEASE'
+buildscript {
+    ext {
+        springBootVersion = '1.5.10.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
-group 'com.jojoldu.inflearn'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group 'com.jojoldu.inflearn.intellij'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
@@ -14,7 +24,10 @@ repositories {
 }
 
 dependencies {
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
+    runtime('com.h2database:h2')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.9.RELEASE'
-    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
 }
